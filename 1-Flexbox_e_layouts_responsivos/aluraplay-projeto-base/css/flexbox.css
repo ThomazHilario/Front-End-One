@@ -51,6 +51,21 @@
 }
 
 
+/* video */
+
+.videos__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.videos__item{
+    flex-grow: 1;
+    height: 303px;
+    width: 280px;
+}
+
 /* Footer */
 .rodape__container{
     display: flex;
@@ -80,5 +95,56 @@
         justify-content: start;
         flex-direction: column;
         gap: 2rem;
+    }
+
+    /* Video */
+    .videos__container{
+        grid-template-columns: 40% 30%;
+    }
+}
+/* Media min-width:1440px */
+@media screen and (min-width:1440px){
+    /* menu */
+    .menu__container{
+        width:239px;
+        overflow: scroll;
+    }
+
+    .menu__lista{
+        height: auto;
+        gap: 15px;
+        padding: 20px 17px 20px 15px;
+    }
+
+    .menu__lista:nth-child(2),
+    .menu__lista:nth-child(3),
+    .menu__lista:nth-child(4){
+        display: flex;
+    }
+
+    .menu__lista:nth-child(3){
+        flex-direction: column-reverse;
+    }
+    
+    .jogos{
+        order: 3;
+    }
+
+    .filmes{
+        order: 2;
+    }
+
+    .premium{
+        order: 1;
+    }
+
+    .maispagina{
+        order: 4;
+    }
+
+    .menu__itens{
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
     }
 }

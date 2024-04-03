@@ -93,6 +93,9 @@ body {
 }
 
 /* MENU LATERAL */
+.menu__container::-webkit-scrollbar{
+    display: none;
+}
 
 .menu__container {
     background-color: var(--azul-escuro);
