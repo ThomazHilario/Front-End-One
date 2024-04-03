@@ -1,3 +1,4 @@
+/* Header */
 .cabecalho__container{
     display: flex;
     justify-content: space-between;
@@ -10,8 +11,24 @@
     display: none;
 }
 
+
+
+/* Footer */
+.rodape__container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Media min-width:834px */
 @media screen and (min-width:834px){
+    /* Header */
     .cabecalho__pesquisar__item{
         display: block;
+    }
+
+    /* Footer */
+    .rodape__container{
+        justify-content: space-between;
     }
 }
