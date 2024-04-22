@@ -12,19 +12,23 @@ document.querySelectorAll('.tecla').forEach(element => {
 })
 
 const somObject = {
-    'q':'som_tecla_pom',
-    'w':'som_tecla_clap',
-    'e':'som_tecla_tim',
-    'a':'som_tecla_puff',
-    's':'som_tecla_splash',
-    'd':'som_tecla_toim',
-    'z':'som_tecla_psh',
-    'x':'som_tecla_tic',
-    'c':'som_tecla_tom'
+    'q':'tecla_pom',
+    'w':'tecla_clap',
+    'e':'tecla_tim',
+    'a':'tecla_puff',
+    's':'tecla_splash',
+    'd':'tecla_toim',
+    'z':'tecla_psh',
+    'x':'tecla_tic',
+    'c':'tecla_tom'
 }
 
 window.addEventListener('keydown', (e) => {
     if(somObject[e.key]){
-        playSound(document.getElementById(somObject[e.key]).src)
+        document.querySelector(`.${somObject[e.key]}`).classList.add('ativa')
+        playSound(document.getElementById(`som_${somObject[e.key]}`).src)
+        setTimeout(() => {
+            document.querySelector(`.${somObject[e.key]}`).classList.remove('ativa')
+        },100)
     }
 })
