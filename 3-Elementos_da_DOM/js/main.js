@@ -11,12 +11,11 @@ buttons.forEach(button => {
     button.addEventListener('click', () => {
         const buttonAttribute = button.dataset.contexto
 
-        // percorrendo os buttons e retirando a classe active delas.
-        buttons.forEach(buttonClass => {
-            if(buttonClass.className.includes('active')){
-                buttonClass.classList.remove('active')
-            }
-        })
+        // Chamando a function removeClassActiveInButton
+        removeClassActiveInButton()
+
+        // Chamando a function addTextInTitlePage
+        addTextInTitlePage(buttonAttribute)
 
         // Adicionando classe active ao button
         button.classList.add('active')
@@ -27,27 +26,42 @@ buttons.forEach(button => {
         // alterando a imagem
         app_image.src = `imagens/${buttonAttribute}.png`
 
-        if(buttonAttribute === 'foco'){
-            titlePage.innerHTML = `
-            <h1 class="app__title">
-                Otimize sua produtividade,<br>
-                <strong class="app__title-strong">mergulhe no que importa.</strong>
-            </h1>
-            `
-        } else if(buttonAttribute === 'descanso-curto'){
-            titlePage.innerHTML = `
-            <h1 class="app__title">
-            Que tal dar uma respirada?<br>
-                <strong class="app__title-strong">Faça uma pausa curta!</strong>
-            </h1>
-            `
-        } else if(buttonAttribute === 'descanso-longo'){
-            titlePage.innerHTML = `
-            <h1 class="app__title">
-                Hora de voltar à superfície.<br>
-                <strong class="app__title-strong">Faça uma pausa longa.</strong>
-            </h1>
-            `
-        }
+        
     })
 })
+
+// Removendo a class active
+function removeClassActiveInButton(){
+    // percorrendo os buttons e retirando a classe active delas.
+    buttons.forEach(buttonClass => {
+        if(buttonClass.className.includes('active')){
+            buttonClass.classList.remove('active')
+        }
+    })
+}
+
+// Adicionando texto
+function addTextInTitlePage(attribute){
+    if(attribute === 'foco'){
+        titlePage.innerHTML = `
+        <h1 class="app__title">
+            Otimize sua produtividade,<br>
+            <strong class="app__title-strong">mergulhe no que importa.</strong>
+        </h1>
+        `
+    } else if(attribute === 'descanso-curto'){
+        titlePage.innerHTML = `
+        <h1 class="app__title">
+        Que tal dar uma respirada?<br>
+            <strong class="app__title-strong">Faça uma pausa curta!</strong>
+        </h1>
+        `
+    } else if(attribute === 'descanso-longo'){
+        titlePage.innerHTML = `
+        <h1 class="app__title">
+            Hora de voltar à superfície.<br>
+            <strong class="app__title-strong">Faça uma pausa longa.</strong>
+        </h1>
+        `
+    }
+}
