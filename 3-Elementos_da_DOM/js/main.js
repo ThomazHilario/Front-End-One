@@ -82,6 +82,10 @@ function addTextInTitlePage(attribute){
             <strong class="app__title-strong">mergulhe no que importa.</strong>
         </h1>
         `
+        Minutos = 25
+        divCard.innerHTML = `
+            ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos < 10 ? '0' + Segundos : Segundos}
+        `
     } else if(attribute === 'descanso-curto'){
         titlePage.innerHTML = `
         <h1 class="app__title">
@@ -89,12 +93,20 @@ function addTextInTitlePage(attribute){
             <strong class="app__title-strong">Faça uma pausa curta!</strong>
         </h1>
         `
+        Minutos = 5
+        divCard.innerHTML = `
+            ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos < 10 ? '0' + Segundos : Segundos}
+        `
     } else if(attribute === 'descanso-longo'){
         titlePage.innerHTML = `
         <h1 class="app__title">
             Hora de voltar à superfície.<br>
             <strong class="app__title-strong">Faça uma pausa longa.</strong>
         </h1>
+        `
+        Minutos = 15
+        divCard.innerHTML = `
+            ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos < 10 ? '0' + Segundos : Segundos}
         `
     }
 }
@@ -130,7 +142,7 @@ function contagem_regressiva(){
             Segundos -= 1
     
             divCard.innerHTML = `
-            ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos}
+            ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos < 10 ? '0' + Segundos : Segundos}
             `
         }
     }, 1000)
