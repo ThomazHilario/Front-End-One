@@ -7,6 +7,25 @@ const app_image = document.querySelector('.app__image')
 // title page
 const titlePage = document.querySelector('.app__title')
 
+// Audio
+const audio = new Audio('sons/luna-rise-part-one.mp3')
+audio.loop = true
+audio.volume = 0.7 
+
+// input alternar
+const input = document.getElementById('alternar-musica')
+
+input.addEventListener('change', (e) => {
+    
+    if(e.target.checked){
+        audio.play()
+    } else{
+        audio.pause()
+    }
+    
+
+})
+
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const buttonAttribute = button.dataset.contexto
