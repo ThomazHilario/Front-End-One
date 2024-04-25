@@ -15,6 +15,20 @@ audio.volume = 0.7
 // input alternar
 const input = document.getElementById('alternar-musica')
 
+// button
+const button = document.getElementById('start-pause')
+
+// divCard
+const divCard = document.getElementById('timer')
+
+//foco
+let Minutos = 25
+let Segundos = 0
+
+divCard.innerHTML = `
+    ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos < 10 ? '0' + Segundos : Segundos}
+`
+
 input.addEventListener('change', (e) => {
     
     if(e.target.checked){
@@ -84,3 +98,56 @@ function addTextInTitlePage(attribute){
         `
     }
 }
+// intervalo de descanso
+let pauseBreak = true
+
+// pause timer
+let pause = false
+
+function contagem_regressiva(){
+
+    setInterval(() => {
+        if(pause === false){
+            if(Minutos == 0 && Segundos == 0 && pauseBreak == true){
+                Minutos = 5
+                pauseBreak = false
+            }
+
+            if(Minutos == 0 && Segundos == 0 && pauseBreak == false){
+                Minutos = 25
+                pauseBreak = true
+            }
+
+            if(Segundos < 1){
+                Minutos -= 1
+                Segundos = 60
+            } 
+
+            if(Minutos === 0 && Segundos === 6){
+                new Audio('sons/beep.mp3').play()
+            }
+        
+            Segundos -= 1
+    
+            divCard.innerHTML = `
+            ${Minutos < 10 ? '0' + Minutos : Minutos} : ${Segundos}
+            `
+        }
+    }, 1000)
+}
+
+button.addEventListener('click', () => {
+    if(button.lastElementChild.textContent == 'Começar'){
+        contagem_regressiva()
+        button.lastElementChild.textContent = 'Pausar'
+        new Audio('sons/play.wav').play()
+    } else if(button.lastElementChild.textContent == 'Pausar'){
+        pause = true
+        button.lastElementChild.textContent = 'Retornar'
+        new Audio('sons/pause.mp3').play()
+    }else {
+        pause = false
+        button.lastElementChild.textContent = 'Pausar'
+        new Audio('sons/play.wav').play()
+    }
+})
