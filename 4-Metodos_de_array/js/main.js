@@ -54,7 +54,7 @@ function loadBooks(array){
         return(
             `
                 <div class="livro">
-                    <img class="livro__imagens" src="${item.imagem}" alt="${item.alt}" />
+                    <img class="${item.quantidade > 0 ? 'livro__imagens' : 'livro__imagens indisponivel'}" src="${item.imagem}" alt="${item.alt}" />
 
                     <h2 class="livro__titulo">
                         ${item.titulo}
