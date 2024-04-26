@@ -13,6 +13,21 @@ buttons.forEach(button => {
             const booksFilter = livros.filter(livro => livro.categoria.toLowerCase() === button.value)
 
             loadBooks(booksFilter)
+        } else{
+            if(button.classList[1].includes('ordenacao')){
+                let livrosOrder = livros
+
+                livrosOrder.sort((a,b) => a.preco - b.preco)
+
+                loadBooks(livrosOrder)
+            }
+
+            if(button.classList[1].includes('disponiveis')){
+                const livrosDisponiveis = livros.filter(livro => livro.quantidade !== 0)
+
+                loadBooks(livrosDisponiveis)
+
+            }
         }
     })
 })
