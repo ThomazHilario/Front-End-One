@@ -23,7 +23,7 @@ buttons.forEach(button => {
             }
 
             if(button.classList[1].includes('disponiveis')){
-                const livrosDisponiveis = livros.filter(livro => livro.quantidade !== 0)
+                const livrosDisponiveis = livros.filter(livro => livro.quantidade > 0)
 
                 loadBooks(livrosDisponiveis)
 
