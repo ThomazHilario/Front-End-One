@@ -8,24 +8,3 @@ export async function loadVideos(){
         console.log(error)
     }
 }
-
-export async function sendvideo(titulo, descricao, url, imagem){
-    try {
-        const response = await fetch('http://localhost:3000/videos', {
-            method:'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                titulo,
-                descricao:`${descricao} mil Visualizações`,
-                imagem,
-                url,
-            })
-        })
-
-        return response.json()
-    } catch (error) {
-        console.log(error)
-    }
-}
