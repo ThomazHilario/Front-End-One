@@ -9,7 +9,7 @@ export async function loadVideos(){
     }
 }
 
-export async function sendvideo(titulo, url, imagem){
+export async function sendvideo(titulo, descricao, url, imagem){
     try {
         const response = await fetch('http://localhost:3000/videos', {
             method:'POST',
@@ -18,6 +18,7 @@ export async function sendvideo(titulo, url, imagem){
             },
             body: JSON.stringify({
                 titulo,
+                descricao:`${descricao} mil Visualizações`,
                 imagem,
                 url,
             })
