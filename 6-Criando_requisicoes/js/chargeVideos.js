@@ -3,11 +3,19 @@ import { loadVideos } from "./connectionApi.js"
 // tag ul
 const listaAtual = document.querySelector('.videos__container')
 
-const lista = await loadVideos()
+async function loadLista(){
+    try {
+        const lista = await loadVideos()
 
-lista.forEach(item => {
-    listaAtual.innerHTML += exibirVideos(item.titulo,item.descricao,item.url,item.imagem)
-})
+        lista.forEach(item => {
+            listaAtual.innerHTML += exibirVideos(item.titulo,item.descricao,item.url,item.imagem)
+        });
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+loadLista()
 
 function exibirVideos(title, descricao, url, imagem){
     const li = `
