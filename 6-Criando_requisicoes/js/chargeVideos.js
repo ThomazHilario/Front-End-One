@@ -7,13 +7,21 @@ const listaAtual = document.querySelector('.videos__container')
 const seachInput = document.getElementById('pesquisar')
 
 seachInput.addEventListener('input', (e) => {
+    let cont = 0
     document.querySelectorAll('.videos__item').forEach(item => {
         if(item.lastElementChild.firstElementChild.nextElementSibling.textContent.toLocaleLowerCase().includes(e.target.value.toLowerCase())){
             item.style.display = 'block'
         } else{
             item.style.display = 'none' 
+            cont += 1
         }
     })
+
+    if(cont === document.querySelectorAll('.videos__item').length){
+        document.getElementById('mensagem_error').style.display = 'block'
+    } else{
+        document.getElementById('mensagem_error').style.display = 'none'
+    }
 })
 
 async function loadLista(){      

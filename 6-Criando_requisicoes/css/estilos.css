@@ -51,6 +51,12 @@ body {
 }
 
 /* ESTILOS DA SEÇÃO VÍDEOS */
+#mensagem_error{
+    display: flex;
+    font-weight: 500;
+    font-size: 25px;
+    display: none;
+}
 
 .videos__container {
     color: black;
