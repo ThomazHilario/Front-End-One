@@ -3,17 +3,27 @@ import { loadVideos } from "./connectionApi.js"
 // tag ul
 const listaAtual = document.querySelector('.videos__container')
 
-async function loadLista(){
-    try {
-        const lista = await loadVideos()
+// seach input
+const seachInput = document.getElementById('pesquisar')
 
-        lista.forEach(item => {
-            listaAtual.innerHTML += exibirVideos(item.titulo,item.descricao,item.url,item.imagem)
-        });
+const lista = await loadVideos()
 
-    } catch (error) {
-        console.log(error)
-    }
+seachInput.addEventListener('input', (e) => {
+    document.querySelectorAll('.videos__item').forEach(item => {
+        if(item.lastElementChild.firstElementChild.nextElementSibling.textContent.toLocaleLowerCase().includes(e.target.value.toLowerCase())){
+            item.style.display = 'block'
+        } else{
+            item.style.display = 'none' 
+        }
+    })
+})
+
+function loadLista(){      
+    
+    lista.forEach(item => {
+        listaAtual.innerHTML += exibirVideos(item.titulo,item.descricao,item.url,item.imagem)
+    });
+    
 }
 loadLista()
 
