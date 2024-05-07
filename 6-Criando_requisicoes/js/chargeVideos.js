@@ -6,8 +6,6 @@ const listaAtual = document.querySelector('.videos__container')
 // seach input
 const seachInput = document.getElementById('pesquisar')
 
-const lista = await loadVideos()
-
 seachInput.addEventListener('input', (e) => {
     document.querySelectorAll('.videos__item').forEach(item => {
         if(item.lastElementChild.firstElementChild.nextElementSibling.textContent.toLocaleLowerCase().includes(e.target.value.toLowerCase())){
@@ -18,11 +16,15 @@ seachInput.addEventListener('input', (e) => {
     })
 })
 
-function loadLista(){      
-    
-    lista.forEach(item => {
-        listaAtual.innerHTML += exibirVideos(item.titulo,item.descricao,item.url,item.imagem)
-    });
+async function loadLista(){      
+    try {
+        const lista = await loadVideos()
+        lista.forEach(item => {
+            listaAtual.innerHTML += exibirVideos(item.titulo,item.descricao,item.url,item.imagem)
+        });
+    } catch (error) {
+        console.log(error)
+    }
     
 }
 loadLista()
