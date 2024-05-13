@@ -1,17 +1,11 @@
-export default function isCPF(value){
+export default function isCPF(input){
     const validation = new RegExp(/([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/)
     
-    if(validation.test(value)){
-       const cpf = value.replace(/\.|-/g, "")
+    if(validation.test(input.value)){
+       const cpf = input.value.replace(/\.|-/g, "")
        
-       if(validateNumberOneInCpf(cpf)){
-            if(validadeNumberTwoInCpf(cpf)){
-                console.log("cpf valido")
-            }else{
-                alert("CPF invalido!") 
-            }
-       }else{
-            alert("CPF invalido!")
+       if(!validateNumberOneInCpf(cpf) || !validadeNumberTwoInCpf(cpf)){
+           input.setCustomValidity("Cpf inválido!!") 
        }
 
     }
