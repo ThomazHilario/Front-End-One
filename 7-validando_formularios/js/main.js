@@ -9,7 +9,7 @@ allInputsForm.forEach(input => {
 
 // verifyInputValue
 function verifyInputValue(input){
-    if(input.name == 'cpf' && input.value.length >= 11){
+    if(input.name == 'cpf' && input.value.length >= 10){
         isCPF(input.value)
     }
 }
