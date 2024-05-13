@@ -2,6 +2,25 @@ import isCPF from "./valida-cpf.js"
 
 const allInputsForm = document.querySelectorAll('[required]')
 
+// formulario principal
+const formulario = document.querySelector('[data-formulario]')
+
+formulario.addEventListener('submit', (e) => {
+    // cancelando o envio do formulario
+    e.preventDefault()
+
+    localStorage.setItem('cadastro', JSON.stringify({
+        nome:e.target.elements['nome'].value,
+        email:e.target.elements['email'].value,
+        rg:e.target.elements['rg'].value,
+        cpf:e.target.elements['cpf'].value,
+        data_de_nascimento:e.target.elements['aniversario'].value
+    }))
+
+    // Redirecionando para outra pagina
+    window.location.href = './abrir-conta-form-2.html'
+})
+
 // percorrendo os inputs
 allInputsForm.forEach(input => {
     input.addEventListener('blur', () => verifyInputValue(input))
