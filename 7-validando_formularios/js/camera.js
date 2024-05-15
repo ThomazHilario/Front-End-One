@@ -5,6 +5,8 @@ const mensagem = document.querySelector('[data-mensagem]')
 const video_camera = document.querySelector('[data-video]')
 const camera = document.querySelector('[data-camera]')
 
+let imagemUrl = ''
+
 camera_botao.addEventListener('click', activeCamera)
 
 async function activeCamera(){
