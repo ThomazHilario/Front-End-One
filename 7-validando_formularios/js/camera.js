@@ -24,5 +24,6 @@ botao_tirar_foto.addEventListener('click', () => {
 
     imagemUrl = canvas.toDataURL('image/jpeg')
 
+    camera.style.display = 'none'
     mensagem.style.display = 'block'
 })
